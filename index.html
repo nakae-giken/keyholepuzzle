@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鍵穴型パズル - Keyhole Puzzle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f7;
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .language-switcher button {
+            background: none;
+            border: 2px solid #555;
+            color: #555;
+            padding: 8px 16px;
+            margin-left: 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher button:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        .language-switcher button.active {
+            background-color: #555;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: linear-gradient(135deg, #4a4a4a 0%, #2c2c2c 100%);
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .promo-text {
+            font-size: 1em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            background: white;
+            margin: 40px auto;
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .description p {
+            margin-bottom: 20px;
+        }
+
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .screenshots img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .screenshots img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            background-color: #fff;
+            margin-top: 40px;
+        }
+
+        .contact {
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .contact a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .content {
+                padding: 40px 20px;
+            }
+
+            .screenshots {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-switcher">
+        <button onclick="switchLanguage('ja')" id="btn-ja" class="active">日本語</button>
+        <button onclick="switchLanguage('en')" id="btn-en">English</button>
+    </div>
+
+    <header>
+        <div class="lang-content active" data-lang="ja">
+            <h1>鍵穴型パズル ※開発中</h1>
+            <p class="subtitle">形を見て、指一本で形を合わせるシンプルなパズルアプリ。</p>
+            <p class="promo-text">シンプルな操作で楽しめる形合わせパズル。</p>
+        </div>
+        <div class="lang-content" data-lang="en">
+            <h1>Keyhole Puzzle ※In Development</h1>
+            <p class="subtitle">A simple one-finger puzzle where you fit each shape into the keyhole.</p>
+            <p class="promo-text">Intuitive shape-matching puzzle with simple controls</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <div class="lang-content active" data-lang="ja">
+                <div class="description">
+                    <p>鍵穴型パズルは、画面上に表示される図形を、下にある"鍵穴"の形に合わせるパズルです。操作は指一本で行え、表示された形をなぞって動かし、鍵穴にぴったり重ねることで次へ進みます。</p>
+
+                    <h3>遊び方はとても簡単です。</h3>
+                    <p>上に表示された形をドラッグし、下の鍵穴にぴったり重なる位置に合わせてください。<br>
+                        形が合うと、自動的に次の問題へ進みます。<br>
+                        手軽に操作できる、シンプルな形合わせパズルです。</p>
+                </div>
+
+                <div class="screenshots">
+                    <img src="imgs/jp_mode_selection.jpeg" alt="モード選択画面">
+                    <img src="imgs/ja_measurement.jpeg" alt="ゲームプレイ画面">
+                    <img src="imgs/jp_result.jpeg" alt="結果画面">
+                </div>
+            </div>
+
+            <div class="lang-content" data-lang="en">
+                <div class="description">
+                    <p>Keyhole Puzzle is a puzzle where you match the shape displayed on the screen to the "keyhole"
+                        shape below. You can play with just one finger. Trace the displayed shape to move it, and align
+                        it perfectly with the keyhole to advance to the next puzzle.</p>
+
+                    <h3>The gameplay is very simple.</h3>
+                    <p>Drag the shape displayed above and position it so it fits perfectly into the keyhole below.<br>
+                        When the shape matches, you automatically advance to the next puzzle.<br>
+                        It's a simple shape-matching puzzle with easy-to-use controls.</p>
+                </div>
+
+                <div class="screenshots">
+                    <img src="imgs/en_mode_selection.jpeg" alt="Mode Selection">
+                    <img src="imgs/en_measurement.jpeg" alt="Gameplay">
+                    <img src="imgs/en_result.jpeg" alt="Result">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="lang-content active" data-lang="ja">
+            <p>&copy; 2025 鍵穴型パズル. All rights reserved.</p>
+            <div class="contact">
+                <p><a href="privacy.html">プライバシーポリシー</a></p>
+                <p>お問い合わせ: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="lang-content" data-lang="en">
+            <p>&copy; 2025 Keyhole Puzzle. All rights reserved.</p>
+            <div class="contact">
+                <p><a href="privacy.html">Privacy Policy</a></p>
+                <p>Contact: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Show selected language content
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.add('active');
+            });
+
+            // Update button states
+            document.querySelectorAll('.language-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) {
+                switchLanguage(savedLang);
+            }
+        });
+    </script>
+</body>
+
+</html>
